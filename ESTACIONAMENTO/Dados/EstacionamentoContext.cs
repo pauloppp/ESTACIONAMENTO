@@ -20,6 +20,7 @@ namespace ESTACIONAMENTO.Dados
         public DbSet<Classificacao> Classificacoes { get; set; }
 
 
+        // Resolve preenchimento automático da DataManobra sem percepção do Usuário.
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataManobra") != null))

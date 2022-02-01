@@ -17,7 +17,6 @@ namespace ESTACIONAMENTO.Models
         public string CPF { get; set; }
 
         public DateTime DataNascimento { get; set; }
-
         
     }
 }

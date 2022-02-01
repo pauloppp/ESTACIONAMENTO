@@ -23,7 +23,5 @@ namespace ESTACIONAMENTO.Models
         public virtual int ManobristaId { get; set; }
         public virtual Manobrista Manobrista { get; set; }
 
-
-
     }
 }

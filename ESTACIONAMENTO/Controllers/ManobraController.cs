@@ -14,7 +14,6 @@ namespace ESTACIONAMENTO.Controllers
     {
         private readonly EstacionamentoContext _context;
        
-
         public ManobraController(EstacionamentoContext context)
         {
             _context = context;
@@ -23,9 +22,7 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Manobra
         public async Task<IActionResult> Index()
         {
-            var teste = await _context.Manobras.OrderByDescending(p => p.Carro.Placa).ToListAsync();
-
-            return View(teste);//(await _context.Manobras.ToListAsync());
+            return View(await _context.Manobras.OrderByDescending(p => p.Carro.Placa).ToListAsync());
         }
 
         // GET: Manobra/Details/5
@@ -56,7 +53,6 @@ namespace ESTACIONAMENTO.Controllers
             var classificacao = _context.Classificacoes.ToList();
             ViewData["Classificacoes"] = new SelectList(classificacao, "Descricao", "Descricao");
 
-
             return View();
         }
 
@@ -84,11 +80,20 @@ namespace ESTACIONAMENTO.Controllers
                 return NotFound();
             }
 
+            
+
             var manobra = await _context.Manobras.FindAsync(id);
             if (manobra == null)
             {
                 return NotFound();
             }
+
+            var carros = _context.Carros.ToList();
+            ViewData["Carros"] = new SelectList(carros, "Id", "Modelo", manobra.Carro.Modelo);
+            var manobristas = _context.Manobristas.ToList();
+            ViewData["Manobristas"] = new SelectList(manobristas, "Id", "Nome", manobra.Manobrista.Nome);
+            var classificacao = _context.Classificacoes.ToList();
+            ViewData["Classificacoes"] = new SelectList(classificacao, "Descricao", "Descricao", manobra.Classificacao);
             return View(manobra);
         }
 
