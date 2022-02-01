@@ -16,3 +16,14 @@ Instruções para utilização do Sistema:
 
 5 - Realizar as Consultas desejadas proceder alterações quando necessário.
 
+
+Observações Gerais:
+-------------------
+
+Base de dados: SQLServer/LocalDb
+
+ORM: EntityFramework Core
+
+Modelo Desenvolvimento: WebAPP ASP.NET Core
+
+
