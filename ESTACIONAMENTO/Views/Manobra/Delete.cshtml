@@ -1,0 +1,39 @@
+﻿@model ESTACIONAMENTO.Models.Manobra
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Confirma a exclusão?</h3>
+<div>
+    <h4>Manobra</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ManobristaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ManobristaId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Classificacao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Classificacao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoManobra)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoManobra)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-action="Index">Retornar para Lista</a>
+    </form>
+</div>
