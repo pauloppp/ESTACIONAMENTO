@@ -22,7 +22,7 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Carro
         public async Task<IActionResult> Index()
         {
-            var cc = await _context.Carros.ToListAsync();
+            //var cc = await _context.Carros.ToListAsync();
             return View(await _context.Carros.ToListAsync());
         }
 
