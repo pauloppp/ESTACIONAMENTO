@@ -7,15 +7,15 @@
 <h1>@ViewData["Title"]</h1>
 
 <h3>Confirma a exclusão?</h3>
-<div>
+<div > 
     <h4>Manobra</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ManobristaId)
+            @Html.DisplayNameFor(model => model.Manobrista.Nome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ManobristaId)
+            @Html.DisplayFor(model => model.Manobrista.Nome)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Classificacao)
@@ -24,10 +24,10 @@
             @Html.DisplayFor(model => model.Classificacao)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipoManobra)
+            @Html.DisplayNameFor(model => model.Carro.Modelo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoManobra)
+            @Html.DisplayFor(model => model.Carro.Modelo)
         </dd>
     </dl>
     

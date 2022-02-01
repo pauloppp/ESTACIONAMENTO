@@ -6,10 +6,12 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<h4>Manobra</h4>
-<hr />
-<div class="row">
+<div class="row border1">
     <div class="col-md-4">
+        <div>
+            <h4>Manobra</h4>
+            <hr />
+        </div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -26,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataManobra" class="control-label"></label>
-                <input asp-for="DataManobra" class="form-control" disabled/>
+                <input asp-for="DataManobra" class="form-control" disabled />
                 <span asp-validation-for="DataManobra" class="text-danger"></span>
             </div>
 
@@ -37,7 +39,7 @@
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-action="Index">Retornar para Lista</a>
 </div>

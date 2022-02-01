@@ -9,9 +9,9 @@
 <p>
     <a asp-action="Create">Novo</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
-        <tr>
+        <tr style="background-color:cadetblue">
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -22,7 +22,7 @@
                 Data Nascimento
             </th>
             <th>Ações Possíveis</th>
-        </tr>
+        </tr >
     </thead>
     <tbody>
 @foreach (var item in Model) {
