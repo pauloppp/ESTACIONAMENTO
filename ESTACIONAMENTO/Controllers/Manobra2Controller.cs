@@ -83,7 +83,7 @@ namespace ESTACIONAMENTO.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexA));
             }
-            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.Carro.Marca);
+            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.Carro.Modelo);
             ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome", manobra2.Manobrista.Nome);
             ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao", manobra2.Classificacao);
             return View(manobra2);
@@ -102,7 +102,7 @@ namespace ESTACIONAMENTO.Controllers
             {
                 return NotFound();
             }
-            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.Carro.Marca);
+            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.Carro.Modelo);
             ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome", manobra2.Manobrista.Nome);
             ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao", manobra2.Classificacao);
             return View(manobra2);
