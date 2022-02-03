@@ -176,12 +176,12 @@ namespace ESTACIONAMENTO.Controllers
                 try
                 {
                     var vlrMinuto = 1.5;
+                    manobra2.DataSaida = DateTime.Now;
                     var minutos = (int)(manobra2.DataSaida - manobra2.DataEntrada).TotalMinutes;
 
                     manobra2.Valor = ((decimal)(minutos * vlrMinuto));
                     manobra2.Status = "Fechada";
-                    manobra2.DataSaida = DateTime.Now;
-
+                    
                     _context.Update(manobra2);
                     await _context.SaveChangesAsync();
                 }
