@@ -14,7 +14,7 @@ Instruções para utilização do Sistema:
     
 4 - Cadastrar algumas Manobras/Serviços.
 
-5 - Realizar as Consultas desejadas proceder alterações quando necessário.
+5 - Realizar as Consultas desejadas e proceder alterações quando necessário.
 
 6 - Introduzidas as opções "Abertas" e "Fechadas" no menu principal.
 
