@@ -72,16 +72,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-<script type="text/javascript">
-    function HabilitaTodos() {
-        document.getElementById("DataSaida").disabled = false;
-        document.getElementById("DataEntrada").disabled = false;
-        document.getElementById("Classificacao").disabled = false;
-        document.getElementById("Status").disabled = false;
-        document.getElementById("CarroModelo").disabled = false;
-        document.getElementById("ManobristaNome").disabled = false;
-        document.getElementById("fechar").submit();
-    }
-
-</script>
