@@ -174,6 +174,7 @@ namespace ESTACIONAMENTO.Controllers
             if (ModelState.IsValid)
             {
                 try
+
                 {
                     var vlrMinuto = 1.5;
                     manobra2.DataSaida = DateTime.Now;
