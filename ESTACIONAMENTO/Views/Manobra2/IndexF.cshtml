@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ESTACIONAMENTO.Models.Manobra2>
+
+@{
+    ViewData["Title"] = "Manobras - Fechadas";
+}
+<br />
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a href="https://localhost:44328/Manobra2/IndexA">Abertas</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr style="background-color:cadetblue">
+            <th>
+                @Html.DisplayNameFor(model => model.Carro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carro.Placa)
+            </th>
+            <th>
+                Manobrista
+            </th>
+            <th>
+                Data/Hora Entrada
+            </th>
+            <th>
+                Data/Hora Saída
+            </th>
+            <th>
+                Tempo(m)
+            </th>
+            <th>
+                Situação
+            </th>
+            <th>
+                Valor R$
+            </th>
+            <th>
+                Ações Disponíveis
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var tempo = (int)((item.DataSaida - item.DataEntrada).TotalMinutes);
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carro.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carro.Placa)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.Manobrista.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataEntrada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataSaida)
+                </td>
+                <td style="text-align:center">
+                    @tempo
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td style="text-align:right">
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td class="text-right">
+                    <a asp-action="Recibo" asp-route-id="@item.Id">Recibo</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

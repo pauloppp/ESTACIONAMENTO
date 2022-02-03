@@ -1,15 +1,11 @@
 using ESTACIONAMENTO.Dados;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Rotativa.AspNetCore;
 
 namespace ESTACIONAMENTO
 {
@@ -33,6 +29,7 @@ namespace ESTACIONAMENTO
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [System.Obsolete]
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -58,6 +55,9 @@ namespace ESTACIONAMENTO
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            var hostingEnvironment = app.ApplicationServices.GetService<Microsoft.AspNetCore.Hosting.IWebHostEnvironment>();
+            RotativaConfiguration.Setup((Microsoft.AspNetCore.Hosting.IHostingEnvironment)hostingEnvironment);
+
         }
     }
 }

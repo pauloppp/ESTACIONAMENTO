@@ -88,7 +88,47 @@ namespace ESTACIONAMENTO.Migrations
 
                     b.HasIndex("CarroId");
 
+                    b.HasIndex("ManobristaId");
+
                     b.ToTable("Manobras");
+                });
+
+            modelBuilder.Entity("ESTACIONAMENTO.Models.Manobra2", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Classificacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataEntrada")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataSaida")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ManobristaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarroId");
+
+                    b.HasIndex("ManobristaId");
+
+                    b.ToTable("Manobras2");
                 });
 
             modelBuilder.Entity("ESTACIONAMENTO.Models.Manobrista", b =>
@@ -124,7 +164,34 @@ namespace ESTACIONAMENTO.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ESTACIONAMENTO.Models.Manobrista", "Manobrista")
+                        .WithMany()
+                        .HasForeignKey("ManobristaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Carro");
+
+                    b.Navigation("Manobrista");
+                });
+
+            modelBuilder.Entity("ESTACIONAMENTO.Models.Manobra2", b =>
+                {
+                    b.HasOne("ESTACIONAMENTO.Models.Carro", "Carro")
+                        .WithMany()
+                        .HasForeignKey("CarroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ESTACIONAMENTO.Models.Manobrista", "Manobrista")
+                        .WithMany()
+                        .HasForeignKey("ManobristaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Carro");
+
+                    b.Navigation("Manobrista");
                 });
 
             modelBuilder.Entity("ESTACIONAMENTO.Models.Carro", b =>
