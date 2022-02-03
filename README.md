@@ -16,7 +16,7 @@ Instruções para utilização do Sistema:
 
 5 - Realizar as Consultas desejadas proceder alterações quando necessário.
 
-6 - Introduzidas as opções "Abertas" e "Fechadas" no menu principal
+6 - Introduzidas as opções "Abertas" e "Fechadas" no menu principal.
 
 Observações Gerais:
 -------------------
