@@ -63,10 +63,9 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Manobra2/Create
         public IActionResult Create()
         {
-            ViewData["CarroId"] = new SelectList(_context.Carros, "Id", "Marca");
-            ViewData["ManobristaId"] = new SelectList(_context.Manobristas, "Id", "Nome");
-            var classificacao = _context.Classificacoes.ToList();
-            ViewData["Classificacoes"] = new SelectList(classificacao, "Descricao", "Descricao");
+            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Modelo");
+            ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome");
+            ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao");
             Manobra2 man = new Manobra2();
             man.Status = "Aberta";
             return View(man);
@@ -83,9 +82,9 @@ namespace ESTACIONAMENTO.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(IndexA));
             }
-            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.Carro.Modelo);
-            ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome", manobra2.Manobrista.Nome);
-            ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao", manobra2.Classificacao);
+            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Modelo");
+            ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome");
+            ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao");
             return View(manobra2);
         }
 
@@ -102,7 +101,7 @@ namespace ESTACIONAMENTO.Controllers
             {
                 return NotFound();
             }
-            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.Carro.Modelo);
+            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Modelo", manobra2.Carro.Modelo);
             ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome", manobra2.Manobrista.Nome);
             ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao", manobra2.Classificacao);
             return View(manobra2);
@@ -138,8 +137,9 @@ namespace ESTACIONAMENTO.Controllers
                 }
                 return RedirectToAction(nameof(IndexA));
             }
-            ViewData["CarroId"] = new SelectList(_context.Carros, "Id", "Marca", manobra2.CarroId);
-            ViewData["ManobristaId"] = new SelectList(_context.Manobristas, "Id", "CPF", manobra2.ManobristaId);
+            ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Modelo", manobra2.Carro.Modelo);
+            ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome", manobra2.Manobrista.Nome);
+            ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao", manobra2.Classificacao);
             return View(manobra2);
         }
 
@@ -182,7 +182,7 @@ namespace ESTACIONAMENTO.Controllers
 
                     manobra2.Valor = ((decimal)(minutos * vlrMinuto));
                     manobra2.Status = "Fechada";
-                    
+
                     _context.Update(manobra2);
                     await _context.SaveChangesAsync();
                 }
