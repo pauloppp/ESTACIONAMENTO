@@ -182,6 +182,7 @@ namespace ESTACIONAMENTO.Controllers
 
                     manobra2.Valor = ((decimal)(minutos * vlrMinuto));
                     manobra2.Status = "Fechada";
+                    manobra2.Classificacao = "Retorno";
 
                     _context.Update(manobra2);
                     await _context.SaveChangesAsync();
