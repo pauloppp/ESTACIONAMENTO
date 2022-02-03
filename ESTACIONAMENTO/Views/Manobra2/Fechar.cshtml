@@ -6,62 +6,67 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<h4>Manobra - @Model.Classificacao/@Model.Status</h4>
+<div>
+    <h4>Manobra - @Model.Classificacao/@Model.Status</h4>
+</div>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Fechar" id="fechar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="DataSaida" class="control-label"></label>
-                <input asp-for="DataSaida" id="DataSaida" class="form-control" disabled />
-                
-            </div>
-            <div class="form-group">
-                <label asp-for="DataEntrada" class="control-label"></label>
-                <input asp-for="DataEntrada" id="DataEntrada" class="form-control" disabled />
-                
-            </div>
-            <div class="form-group">
-                <label asp-for="Classificacao" class="control-label"></label>
-                <input asp-for="Classificacao" id="Classificacao" class="form-control" disabled />
-                
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" id="Status" class="form-control" disabled />
-                
-            </div>
-            <div class="form-group" hidden="hidden">
-                <label asp-for="CarroId" class="control-label"></label>
-                <input asp-for="CarroId" class="form-control"  />
-                
-            </div>
-            <div class="form-group">
-                <label asp-for="Carro.Modelo" class="control-label"></label>
-                <input asp-for="Carro.Modelo" id="CarroModelo" class="form-control" disabled />
-                
-            </div>
-            <div class="form-group" hidden="hidden">
-                <label asp-for="ManobristaId" class="control-label"></label>
-                <input asp-for="ManobristaId"  class="form-control" />
-                
-            </div>
-            <div class="form-group">
-                <label asp-for="Manobrista.Nome" class="control-label"></label>
-                <input asp-for="Manobrista.Nome" id="ManobristaNome" class="form-control" disabled />
-                
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <input type="submit" value="Encerrar Serviço" class="btn btn-primary" onclick="HabilitaTodos();" />
-            </div>
-        </form>
+<div class="border1">
+    <div>
+        <div class="col-md-4">
+            <form asp-action="Fechar" id="fechar">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="DataSaida" class="control-label"></label>
+                    <input asp-for="DataSaida" id="DataSaida" class="form-control" disabled />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataEntrada" class="control-label"></label>
+                    <input asp-for="DataEntrada" id="DataEntrada" class="form-control" disabled />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Classificacao" class="control-label"></label>
+                    <input asp-for="Classificacao" id="Classificacao" class="form-control" disabled />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" id="Status" class="form-control" disabled />
+
+                </div>
+                <div class="form-group" hidden="hidden">
+                    <label asp-for="CarroId" class="control-label"></label>
+                    <input asp-for="CarroId" class="form-control" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Carro.Modelo" class="control-label"></label>
+                    <input asp-for="Carro.Modelo" id="CarroModelo" class="form-control" disabled />
+
+                </div>
+                <div class="form-group" hidden="hidden">
+                    <label asp-for="ManobristaId" class="control-label"></label>
+                    <input asp-for="ManobristaId" class="form-control" />
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Manobrista.Nome" class="control-label"></label>
+                    <input asp-for="Manobrista.Nome" id="ManobristaNome" class="form-control" disabled />
+
+                </div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <input type="submit" value="Encerrar Serviço" class="btn btn-primary" onclick="HabilitaTodos();" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
+<br />
 <div>
-    <a asp-action="Index">Retorna para Lista</a>
+    <a asp-action="IndexA">Retorna para Lista</a>
 </div>
 
 @section Scripts {
