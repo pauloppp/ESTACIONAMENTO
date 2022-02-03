@@ -63,6 +63,7 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Manobra2/Create
         public IActionResult Create()
         {
+            ViewData["Mensagem"] = "";
             ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Modelo");
             ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome");
             ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao");
@@ -76,6 +77,15 @@ namespace ESTACIONAMENTO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DataSaida,Classificacao,Status,Valor,CarroId,ManobristaId,Id")] Manobra2 manobra2)
         {
+            if (Manobra2CarroExists(manobra2.CarroId, "Aberta"))
+            {
+                ViewData["Mensagem"] = "Esse carro já está estacionado! Selecione outro.";
+                ViewData["Carros"] = new SelectList(_context.Carros, "Id", "Modelo");
+                ViewData["Manobristas"] = new SelectList(_context.Manobristas, "Id", "Nome");
+                ViewData["Classificacoes"] = new SelectList(_context.Classificacoes.ToList(), "Descricao", "Descricao");
+                return View(manobra2);
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(manobra2);
@@ -257,6 +267,11 @@ namespace ESTACIONAMENTO.Controllers
         private bool Manobra2Exists(int id)
         {
             return _context.Manobras2.Any(e => e.Id == id);
+        }
+
+        private bool Manobra2CarroExists(int id, string status)
+        {
+            return _context.Manobras2.Any(e => e.CarroId == id & e.Status == status); ;
         }
     }
 }

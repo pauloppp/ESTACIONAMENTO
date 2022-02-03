@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Cadastrar";
+    var msg = ViewBag.Mensagem;
 }
 
 <script src="~/js/site.js"></script>
@@ -38,10 +39,20 @@
         </form>
     </div>
 </div>
-
+<br />
 <div>
     <a asp-action="IndexA">Retorna para Lista</a>
 </div>
+
+@{
+    if (msg != string.Empty)
+    {
+        <br />
+        <div class="alert-warning">
+            <p>@msg</p>
+        </div>
+    }
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
