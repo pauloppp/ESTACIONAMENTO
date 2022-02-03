@@ -18,6 +18,8 @@ Instruções para utilização do Sistema:
 
 6 - Introduzidas as opções "Abertas" e "Fechadas" no menu principal.
 
+7 - Fechamento dos serviços com emissão de comprovante de pagamento (Tela/Impresso).
+
 Observações Gerais:
 -------------------
 
