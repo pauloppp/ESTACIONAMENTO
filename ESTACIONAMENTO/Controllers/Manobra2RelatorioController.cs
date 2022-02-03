@@ -18,30 +18,15 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Manobra2/ReciboP/5
         public async Task<ViewAsPdf> ReciboP(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
             var manobra2 = await _context.Manobras2.FindAsync(id);
-            //if (manobra2 == null)
-            //{
-            //    return NotFound();
-            //}
-
             var reciboPDF = new ViewAsPdf()
             {
                 ViewName = "ReciboP",
                 IsGrayScale = true,
                 Model = manobra2
             };
-
-            
             return reciboPDF;
         }
-
-
-
 
     }
 }
