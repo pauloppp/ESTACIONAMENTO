@@ -55,6 +55,7 @@ namespace ESTACIONAMENTO
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
             //var hostingEnv = app.ApplicationServices.GetService<Microsoft.AspNetCore.Hosting.IWebHostEnvironment>();
             RotativaConfiguration.Setup((Microsoft.AspNetCore.Hosting.IHostingEnvironment)env);
 
