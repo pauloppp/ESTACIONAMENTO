@@ -261,7 +261,7 @@ namespace ESTACIONAMENTO.Controllers
             var manobra2 = await _context.Manobras2.FindAsync(id);
             _context.Manobras2.Remove(manobra2);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexA));
         }
 
         private bool Manobra2Exists(int id)
