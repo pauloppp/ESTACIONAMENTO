@@ -120,7 +120,7 @@ namespace ESTACIONAMENTO.Controllers
         // POST: Manobra2/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DataSaida,Classificacao,Status,Valor,CarroId,ManobristaId,Id")] Manobra2 manobra2)
+        public async Task<IActionResult> Edit(int id, Manobra2 manobra2)
         {
             if (id != manobra2.Id)
             {

@@ -17,3 +17,10 @@ function HabilitaTodos() {
     document.getElementById("ManobristaNome").disabled = false;
     document.getElementById("fechar").submit();
 }
+
+function HabilitaTodosE() {
+    document.getElementById("DataEntrada").disabled = false;
+    document.getElementById("Classificacao").disabled = false;
+    document.getElementById("Status").disabled = false;
+    document.getElementById("editar").submit();
+}
