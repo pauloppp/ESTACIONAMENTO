@@ -7,7 +7,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a href="https://localhost:44328/Manobra2/IndexA">Abertas</a>
+    <a class="btn btn-success" href="https://localhost:44328/Manobra2/IndexA">Abertas</a>
 </p>
 <table class="table table-hover">
     <thead>
@@ -72,7 +72,7 @@
                     @Html.DisplayFor(modelItem => item.Valor)
                 </td>
                 <td class="text-right">
-                    <a asp-action="Recibo" asp-route-id="@item.Id">Recibo</a>
+                    <a class="btn btn-dark" asp-action="Recibo" asp-route-id="@item.Id">Emitir Recibo</a>
                 </td>
             </tr>
         }
