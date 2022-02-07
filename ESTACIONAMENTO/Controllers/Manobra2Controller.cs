@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ESTACIONAMENTO.Dados;
 using ESTACIONAMENTO.Models;
+using ESTACIONAMENTO.Extensoes;
 
 namespace ESTACIONAMENTO.Controllers
 {
@@ -190,9 +191,9 @@ namespace ESTACIONAMENTO.Controllers
                     manobra2.DataSaida = DateTime.Now;
                     var minutos = (int)(manobra2.DataSaida - manobra2.DataEntrada).TotalMinutes;
 
-                    manobra2.Valor = ((decimal)(minutos * vlrMinuto));
-                    manobra2.Status = "Fechada";
-                    manobra2.Classificacao = "Retorno";
+                    manobra2.Valor = ValorPermanencia(minutos, (decimal)vlrMinuto);
+                    manobra2.Status = manobra2.Status.ToFechada();
+                    manobra2.Classificacao = manobra2.Classificacao.ToRetorno();
 
                     _context.Update(manobra2);
                     await _context.SaveChangesAsync();
@@ -271,7 +272,13 @@ namespace ESTACIONAMENTO.Controllers
 
         private bool Manobra2CarroExists(int id, string status)
         {
-            return _context.Manobras2.Any(e => e.CarroId == id & e.Status == status); ;
+            return _context.Manobras2.Any(e => e.CarroId == id & e.Status == status);
         }
+
+        public decimal ValorPermanencia(int min, decimal vlrMin)
+        {
+            return (decimal)(min * vlrMin);
+        }
+
     }
 }
