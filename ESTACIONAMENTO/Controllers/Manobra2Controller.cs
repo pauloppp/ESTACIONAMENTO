@@ -274,9 +274,9 @@ namespace ESTACIONAMENTO.Controllers
             return _context.Manobras2.Any(e => e.CarroId == id & e.Status == status);
         }
 
-        public decimal ValorPermanencia(int min, decimal vlrMin)
+        public decimal ValorPermanencia(int totMin, decimal vlrMin)
         {
-            return (decimal)(min * vlrMin);
+            return (decimal)(totMin * vlrMin);
         }
 
     }
