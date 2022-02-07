@@ -27,14 +27,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Carro" asp-action="Index">Carros</a>
                         </li>
-                        <li class="nav-item">
+
+                        @*Rotina substituida pelas IndexA e IndexF abaixo...*@
+                        @*--------------------------------------------------*@
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Manobra" asp-action="Index">Manobras</a>
+                        </li>*@
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexA">ManobrasAbertas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexA">Abertas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexF">Fechadas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexF">ManobrasFechadas</a>
                         </li>
                     </ul>
                 </div>
