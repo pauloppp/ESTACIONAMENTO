@@ -33,7 +33,6 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Manobra2
         public async Task<IActionResult> IndexF()
         {
-
             var estacionamentoContext = _context.Manobras2.Include(m => m.Carro)
                                                           .Include(m => m.Manobrista)
                                                           .Where(s => s.Status == "Fechada");
