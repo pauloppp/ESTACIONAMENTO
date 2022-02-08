@@ -16,7 +16,7 @@ Instruções para utilização do Sistema:
 
 5 - Realizar as Consultas desejadas e proceder alterações quando necessário.
 
-6 - Utilizar as opções "Abertas" e "Fechadas" no menu principal.
+6 - Utilizar as opções "ManobrasAbertas" e "ManobrasFechadas" no menu principal.
 
 7 - Efetivar fechamento dos serviços com emissão de comprovante de pagamento (Tela/Impresso).
 
