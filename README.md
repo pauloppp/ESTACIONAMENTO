@@ -1,5 +1,5 @@
 # ESTACIONAMENTO
-Sistema para Controle de Estacionamentos
+Sistema simples para controle de serviços de estacionamentos.
 
 Instruções para utilização do Sistema:
 --------------------------------------
@@ -14,9 +14,9 @@ Instruções para utilização do Sistema:
     
 4 - Cadastrar algumas Manobras/Serviços.
 
-5 - Realizar as Consultas desejadas e proceder alterações quando necessário.
+5 - Realizar as consultas desejadas e proceder alterações quando necessário.
 
-6 - Utilizar as opções "Abertas" e "Fechadas" no menu principal.
+6 - Utilizar as opções "ManobrasAbertas" e "ManobrasFechadas" no menu principal.
 
 7 - Efetivar fechamento dos serviços com emissão de comprovante de pagamento (Tela/Impresso).
 
@@ -29,6 +29,6 @@ ORM: EntityFramework Core
 
 Modelo Desenvolvimento: WebAPP ASP.NET Core
 
-1 - Introduzidas as opções "Abertas" e "Fechadas" no menu principal.
+1 - Introduzidas as opções "ManobrasAbertas" e "ManobrasFechadas" no menu principal.
 
 2 - Fechamento dos serviços com emissão de comprovante de pagamento (Tela/Impresso).
