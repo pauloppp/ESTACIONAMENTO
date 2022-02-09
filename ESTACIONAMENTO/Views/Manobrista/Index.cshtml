@@ -7,7 +7,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Novo</a>
+    <a class="btn btn-primary" asp-action="Create">Novo</a>
 </p>
 <table class="table table-hover">
     <thead>
@@ -21,7 +21,7 @@
             <th>
                 Data Nascimento
             </th>
-            <th>Ações Possíveis</th>
+            <th class="text-right">Ações Possíveis</th>
         </tr >
     </thead>
     <tbody>
@@ -36,10 +36,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DataNascimento)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            <td class="text-right">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
             </td>
         </tr>
 }

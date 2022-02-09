@@ -6,9 +6,16 @@
 <br />
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a class="btn btn-success" href="https://localhost:44328/Manobra2/IndexA">Abertas</a>
-</p>
+<div class="row">
+    <div class="col-6">
+        <a class="btn btn-success" href="https://localhost:44328/Manobra2/IndexA">Abertas</a>
+    </div>
+    
+    <div class="col-6 text-right">
+        <p>Total faturado para o período: <span style="background-color:gold">[ <b>R$ @Model.Sum(v => v.Valor)</b> ]</span></p>
+    </div>
+</div>
+
 <table class="table table-hover">
     <thead>
         <tr style="background-color:cadetblue">
