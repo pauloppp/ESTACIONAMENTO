@@ -1,4 +1,5 @@
 ﻿@model ESTACIONAMENTO.Models.Manobra2
+@using ESTACIONAMENTO.Extensoes;
 
 @{
     ViewData["Title"] = "Recibo de Pagamento";
@@ -53,12 +54,6 @@
             @Html.DisplayFor(model => model.Status)
         </dd>
         <dt class="col-sm-2">
-            Valor R$
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Valor)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Carro)
         </dt>
         <dd class="col-sm-10">
@@ -76,10 +71,16 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Manobrista.Nome)
         </dd>
+        <dt class="col-sm-2">
+            Valor R$
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Valor) (@Model.Valor.ToExtenso())
+        </dd>
     </dl>
 </div>
 <hr />
 <div>
-    <a asp-action="ReciboP" asp-controller="Manobra2Relatorio" asp-route-id="@Model.Id">Imprimir</a> |
-    <a asp-action="IndexF">Retorna para Lista</a>
+    <a class="btn btn-dark" asp-action="ReciboP" asp-controller="Manobra2Relatorio" asp-route-id="@Model.Id">Imprimir</a>
+    <a class="btn btn-secondary" asp-action="IndexF">Retorna para Lista</a>
 </div>
