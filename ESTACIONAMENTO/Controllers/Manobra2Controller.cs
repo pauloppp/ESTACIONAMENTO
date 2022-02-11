@@ -23,21 +23,23 @@ namespace ESTACIONAMENTO.Controllers
         // GET: Manobra2
         public async Task<IActionResult> IndexA()
         {
-            var estacionamentoContext = _context.Manobras2.Include(m => m.Carro)
-                                                                   .Include(m => m.Manobrista)
-                                                                   .Where(s => s.Status == "Aberta");
+            var estacionamentoContext = await _context.Manobras2.Include(m => m.Carro)
+                                                                .Include(m => m.Manobrista)
+                                                                .Where(s => s.Status == "Aberta")
+                                                                .ToListAsync();
 
-            return View(await estacionamentoContext.ToListAsync());
+            return View(estacionamentoContext);
         }
 
         // GET: Manobra2
         public async Task<IActionResult> IndexF()
         {
-            var estacionamentoContext = _context.Manobras2.Include(m => m.Carro)
-                                                          .Include(m => m.Manobrista)
-                                                          .Where(s => s.Status == "Fechada");
+            var estacionamentoContext = await _context.Manobras2.Include(m => m.Carro)
+                                                                .Include(m => m.Manobrista)
+                                                                .Where(s => s.Status == "Fechada")
+                                                                .ToListAsync();
 
-            return View(await estacionamentoContext.ToListAsync());
+            return View(estacionamentoContext);
         }
 
         // GET: Manobra2/Details/5
