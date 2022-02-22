@@ -32,3 +32,6 @@ Modelo Desenvolvimento: WebAPP ASP.NET Core
 1 - Introduzidas as opções "ManobrasAbertas" e "ManobrasFechadas" no menu principal.
 
 2 - Fechamento dos serviços com emissão de comprovante de pagamento (Tela/Impresso).
+
+3 - Introduzida a aba "Relatórios" com a possibilidade de múltiplas seleções de parâmetros.
+
