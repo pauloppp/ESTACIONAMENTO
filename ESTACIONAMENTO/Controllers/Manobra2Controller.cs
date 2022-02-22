@@ -42,6 +42,145 @@ namespace ESTACIONAMENTO.Controllers
             return View(estacionamentoContext);
         }
 
+        public async Task<IActionResult> IndexR_E()
+        {
+            ViewData["Carros"] = new SelectList(await _context.Carros.ToListAsync(), "Id", "Modelo");
+            ViewData["Manobristas"] = new SelectList(await _context.Manobristas.ToListAsync(), "Id", "Nome");
+            ViewData["Classificacoes"] = new SelectList(await _context.Classificacoes.ToListAsync(), "Descricao", "Descricao");
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> IndexR_E(Manobra2 man, DateTime inicio, DateTime fim)//string classificacao, int manobristaId, int carroId, DateTime inicio, DateTime fim)
+        {
+            ViewData["Carros"] = new SelectList(await _context.Carros.ToListAsync(), "Id", "Modelo");
+            ViewData["Manobristas"] = new SelectList(await _context.Manobristas.ToListAsync(), "Id", "Nome");
+            ViewData["Classificacoes"] = new SelectList(await _context.Classificacoes.ToListAsync(), "Descricao", "Descricao");
+
+            fim = fim.AddHours(24);
+
+            if (man.CarroId != 0 && man.ManobristaId == 0 && man.Classificacao == "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId && (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+            if (man.CarroId == 0 && man.ManobristaId != 0 && man.Classificacao == "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.ManobristaId == man.ManobristaId && (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.ManobristaId == man.ManobristaId).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+            if (man.CarroId == 0 && man.ManobristaId == 0 && man.Classificacao != "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.Classificacao == man.Classificacao && (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.Classificacao == man.Classificacao).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+
+
+            if (man.CarroId != 0 && man.ManobristaId != 0 && man.Classificacao == "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId && 
+                                                                       m.ManobristaId == man.ManobristaId && 
+                                                                      (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId &&
+                                                                       m.ManobristaId == man.ManobristaId).ToListAsync(); ;
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+            if (man.CarroId != 0 && man.ManobristaId == 0 && man.Classificacao != "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId &&
+                                                                       m.Classificacao == man.Classificacao &&
+                                                                      (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId &&
+                                                                       m.Classificacao == man.Classificacao).ToListAsync(); ;
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+            if (man.CarroId == 0 && man.ManobristaId != 0 && man.Classificacao != "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.ManobristaId == man.ManobristaId &&
+                                                                       m.Classificacao == man.Classificacao &&
+                                                                      (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.ManobristaId == man.ManobristaId &&
+                                                                       m.Classificacao == man.Classificacao).ToListAsync(); ;
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+            if (man.CarroId != 0 && man.ManobristaId != 0 && man.Classificacao != "0")
+            {
+                if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId && 
+                                                                       m.ManobristaId == man.ManobristaId &&
+                                                                       m.Classificacao == man.Classificacao &&
+                                                                      (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
+                    return View("IndexR_E", manobras);
+                }
+                else
+                {
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId &&
+                                                                       m.ManobristaId == man.ManobristaId &&
+                                                                       m.Classificacao == man.Classificacao).ToListAsync(); ;
+                    return View("IndexR_E", manobras);
+                }
+            }
+
+
+
+            return View();
+            
+        }
+
+
         // GET: Manobra2/Details/5
         public async Task<IActionResult> Details(int? id)
         {

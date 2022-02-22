@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ESTACIONAMENTO.Models.Manobra2>
+
+@{
+    ViewData["Title"] = "Geral - Por Data Entrada";
+
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+
+@{
+    if (Model == null)
+    {
+        <div>
+            <partial name="_SelecionarRel" for="@Model" />
+        </div>
+    }
+    else
+    {
+        //string pp = ViewBag.Parametros;
+        //var ss = pp.Split(",");
+        //var carro = ss.ElementAt(0).ToString();
+        //var manobrista = ss.ElementAt(1).ToString();
+        //var classificacao = ss.ElementAt(2).ToString();
+        //var inicio = ss.ElementAt(3).ToString();
+        //var fim = ss.ElementAt(4).ToString();
+
+        <div>
+            <a asp-action="IndexR_E">Selecionar</a>
+        </div>
+        <br />
+        @*<p>Parâmetros [ <b>Carro:</b> @carro / <b>Manobrista:</b> @manobrista / <b>TipoManobra:</b> @classificacao / <b>Início:</b> @inicio.Substring(0,9) / <b>Fim:</b> @fim.Substring(0,9) ]</p>*@
+        <table class="table table-hover">
+            <thead>
+                <tr style="background-color:cadetblue">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Carro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Carro.Placa)
+                    </th>
+                    <th>
+                        Tipo Manobra
+                    </th>
+                    <th>
+                        Manobrista
+                    </th>
+                    <th>
+                        Data/Hora Entrada
+                    </th>
+                    @*<th>
+                            Data/Hora Saída
+                        </th>*@
+                    <th>
+                        Situação
+                    </th>
+
+                    <th>
+                        Ações Disponíveis
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Carro.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Carro.Placa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Classificacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Manobrista.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataEntrada)
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.DataSaida)
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td>
+                            @if (item.Status != "Fechada")
+                            {
+                                <div class="text-right">
+                                    <a class="btn btn-secondary" asp-action="Fechar" asp-route-id="@item.Id">Fechar</a>
+                                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+

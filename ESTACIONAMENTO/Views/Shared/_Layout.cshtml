@@ -31,8 +31,8 @@
                         @*Rotina substituida pelas IndexA e IndexF abaixo...*@
                         @*--------------------------------------------------*@
                         @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Manobra" asp-action="Index">Manobras</a>
-                        </li>*@
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Manobra" asp-action="Index">Manobras</a>
+                            </li>*@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexA">ManobrasAbertas</a>
@@ -40,8 +40,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexF">ManobrasFechadas</a>
                         </li>
+
+
+                        @*Rotina em desenvolvimento...*@
+                        @*----------------------------*@
+                        <li class="nav-item d-flex flex-column justify-content-center align-items-center text-dark">
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Relatórios
+                                    <span class="caret"></span>
+                                </div>
+                                <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenu1">
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexR_E">Diversos</a>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Manobra2" asp-action="IndexR_S">Teste</a>
+                                </ul>
+                            </div>
+                        </li>
+
+
                     </ul>
+
                 </div>
+
             </div>
         </nav>
     </header>

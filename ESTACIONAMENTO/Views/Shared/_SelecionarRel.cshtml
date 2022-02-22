@@ -1,0 +1,56 @@
+﻿@model ESTACIONAMENTO.Models.Manobra2
+
+@{
+    ViewData["Title"] = "SelecionarRel";
+}
+
+<div>
+    <form id="rel" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">Carro</label>
+                    <select asp-for="CarroId" class="form-control" asp-items="ViewBag.Carros">
+                        <option value="0">Selecione...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">Manobrista</label>
+                    <select asp-for="ManobristaId" class="form-control" asp-items="ViewBag.Manobristas">
+                        <option value="0">Selecione...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">Tipo Manobra</label>
+                    <select asp-for="Classificacao" class="form-control" asp-items="ViewBag.Classificacoes">
+                        <option value="0">Selecione...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Data De:</label>
+                    <input type="date" asp-for="DataEntrada" id="inicio" name="inicio" class="form-control" style="background-color:gainsboro" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Data Até:</label>
+                    <input type="date" asp-for="DataEntrada" id="fim" name="fim" class="form-control" style="background-color:gainsboro" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Executar" class="btn btn-primary" onclick="" />
+        </div>
+
+    </form>
+
+</div>
