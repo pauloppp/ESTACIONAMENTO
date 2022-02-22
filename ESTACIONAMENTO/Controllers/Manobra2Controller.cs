@@ -38,7 +38,6 @@ namespace ESTACIONAMENTO.Controllers
                                                                 .Include(m => m.Manobrista)
                                                                 .Where(s => s.Status == "Fechada")
                                                                 .ToListAsync();
-
             return View(estacionamentoContext);
         }
 
@@ -52,7 +51,7 @@ namespace ESTACIONAMENTO.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexR_E(Manobra2 man, DateTime inicio, DateTime fim)//string classificacao, int manobristaId, int carroId, DateTime inicio, DateTime fim)
+        public async Task<IActionResult> IndexR_E(Manobra2 man, DateTime inicio, DateTime fim)
         {
             ViewData["Carros"] = new SelectList(await _context.Carros.ToListAsync(), "Id", "Modelo");
             ViewData["Manobristas"] = new SelectList(await _context.Manobristas.ToListAsync(), "Id", "Nome");
@@ -60,6 +59,7 @@ namespace ESTACIONAMENTO.Controllers
 
             fim = fim.AddHours(24);
 
+            // Por Carro
             if (man.CarroId != 0 && man.ManobristaId == 0 && man.Classificacao == "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
@@ -74,6 +74,7 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
+            // Por Manobrista
             if (man.CarroId == 0 && man.ManobristaId != 0 && man.Classificacao == "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
@@ -88,6 +89,7 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
+            // Por Classificação
             if (man.CarroId == 0 && man.ManobristaId == 0 && man.Classificacao != "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
@@ -102,14 +104,13 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
-
-
+            // Por Carro/Manobrista
             if (man.CarroId != 0 && man.ManobristaId != 0 && man.Classificacao == "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
                 {
-                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId && 
-                                                                       m.ManobristaId == man.ManobristaId && 
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId &&
+                                                                       m.ManobristaId == man.ManobristaId &&
                                                                       (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
                     return View("IndexR_E", manobras);
                 }
@@ -121,6 +122,7 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
+            // Por Carro/Classificação
             if (man.CarroId != 0 && man.ManobristaId == 0 && man.Classificacao != "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
@@ -138,6 +140,7 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
+            // Por Manobrista/Classificação
             if (man.CarroId == 0 && man.ManobristaId != 0 && man.Classificacao != "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
@@ -155,11 +158,12 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
+            // Por Carro/Manobrista/Classificação
             if (man.CarroId != 0 && man.ManobristaId != 0 && man.Classificacao != "0")
             {
                 if (inicio.ToShortDateString() != "01/01/0001" && fim.ToShortDateString() != "01/01/0001")
                 {
-                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId && 
+                    var manobras = await _context.Manobras2.Where(m => m.CarroId == man.CarroId &&
                                                                        m.ManobristaId == man.ManobristaId &&
                                                                        m.Classificacao == man.Classificacao &&
                                                                       (m.DataEntrada >= inicio && m.DataEntrada <= fim)).ToListAsync();
@@ -174,10 +178,8 @@ namespace ESTACIONAMENTO.Controllers
                 }
             }
 
-
-
             return View();
-            
+
         }
 
 
